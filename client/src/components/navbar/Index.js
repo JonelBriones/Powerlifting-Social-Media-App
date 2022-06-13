@@ -5,6 +5,7 @@ const Index = () => {
       <>
         <nav>
             <ul>
+                <li className='logo'><a href="#home">PowerLifts</a></li>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#following">Following</a></li>
                 <li><a href="#login">Log in</a></li>
