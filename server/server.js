@@ -13,8 +13,8 @@ app.use(cors({
 
 app.use(cookieParser());
 
-// require('./config/mongoose.config');
-// require('./routes/user.route')(app);
+require('./config/mongoose.config');
+require('./routes/user.route')(app);
 // require('./routes/post.route')(app);
 
 app.listen(process.env.MY_PORT,()=> {

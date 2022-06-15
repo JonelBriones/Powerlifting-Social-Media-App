@@ -1,6 +1,18 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
+import axios from 'axios'
+import {Link} from 'react-router-dom'
+import SuggestedAccounts from '../accounts/SuggestedAccounts'
 
 const Index = () => {
+    const [user,setUser] = useState({})
+    useEffect(()=> {
+      axios.get("http://localhost:8000/api/users/user",{withCredentials:true})
+        .then((res)=>{
+          console.log(res.data)
+          setUser(res.data)
+        })
+        .catch((err)=>console.log(err))
+    },[])
   return (
       <>
         <nav>
@@ -8,7 +20,7 @@ const Index = () => {
                 <li className='logo'><a href="#home">PowerLifts</a></li>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#following">Following</a></li>
-                <li><a href="#login">Log in</a></li>
+                <li><Link to={`/users/${user.username}`}>My Account</Link></li>
             <div className='topics'>
             <span>Excercises</span>
                 <li><a href="#squat">Squat</a></li>
@@ -17,9 +29,7 @@ const Index = () => {
             </div>
             <div className='suggested-accounts'>
             <span>Suggested-accounts</span>
-                <li><a href="#account1">Account 1</a></li>
-                <li><a href="#account2">Account 2</a></li>
-                <li><a href="#account3">Account 3</a></li>
+                <SuggestedAccounts/>
             </div>
             <div className='extra-links'>
                 <span>Extra-links</span>
