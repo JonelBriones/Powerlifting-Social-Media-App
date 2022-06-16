@@ -83,7 +83,7 @@ module.exports = {
             console.log("Something went wrong in finding logged user")
     },
     getOneUser: (req,res)=> {
-        User.findOne({username:req.params.id})
+        User.findOne({username:req.params.username})
             .then((oneUser)=>{
                 console.log(oneUser)
                 res.json(oneUser)
@@ -95,12 +95,13 @@ module.exports = {
             })
     },
     updateUser: (req,res)=> {
-        User.findOneAndUpdate({_id:req.params.id},req.body)
+        User.findOneAndUpdate({_id:req.params.id},req.body,{new:true,runValidators:true})
             .then((updateUser)=> {
                 res.json(updateUser)
                 console.log(updateUser)
             })
             .catch((err)=>{
+                res.status(400).json(err)
                 console.log("Something went wrong in updating user")
             })
     },

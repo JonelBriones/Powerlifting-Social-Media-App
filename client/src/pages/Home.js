@@ -1,17 +1,10 @@
 import React, {useState} from 'react'
 import Post from '../components/accounts/Post.js'
-import Index from '../components/navbar/Index.js'
-import TopNav from '../components/navbar/TopNav.js'
 
 const Home = () => {
-  const [loginToggle,setLoginToggle] = useState(false)
   return (
       <>
-        <TopNav loginToggle={loginToggle}/>
         <div className='container-contents'>
-            <div className='container-contents-left-side'>
-            <Index/>
-            </div>
             <div className='container-contents-main'>
               <div id='top'></div>
                 <Post/>

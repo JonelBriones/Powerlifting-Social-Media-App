@@ -53,6 +53,7 @@ const Post = () => {
             </div>
           </div>
         </div>
+        <hr/>
       </div>
       ))
     }
